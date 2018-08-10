@@ -9,3 +9,6 @@ dist/
 
 # PyPi package build files
 build/
+
+# PyPi package info files
+cryptocmp.egg-info/
