@@ -6,3 +6,6 @@ venv/
 
 # PyPi package distributable files
 dist/
+
+# PyPi package build files
+build/
