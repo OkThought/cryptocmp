@@ -3,3 +3,6 @@
 
 # Virtual environment files
 venv/
+
+# PyPi package distributable files
+dist/
