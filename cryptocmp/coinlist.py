@@ -28,8 +28,6 @@ def get(
         List of available coins in CryptoCompare.
     """
 
-    # use limit-1 because it seems api interprets it as the last index
-    # even though they described it as "The number of data points to return"
     return {
         'builtOn': built_on,
         'extraParams': extra_params,
