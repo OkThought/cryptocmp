@@ -7,26 +7,26 @@ from cryptocmp import decorators
 @decorators.response_error_raise
 @decorators.get('data/price')
 def get(
-        from_symbol,
-        to_symbols,
+        coin,
+        in_coins,
         try_conversion=None,
         exchange=None,
         extra_params=None,
         sign=None,
 ):
-    """Get the current price of any crypto-currency in any other currency.
+    """Get the current price of any coin in any other coin(s).
 
     If the crypto does not trade directly into the toSymbol requested, BTC will
     be used for conversion.
     If the opposite pair trades CryptoCompare inverts it (eg.: BTC-XMR)
 
+    :param coin:
+        REQUIRED The coin of interest
+        [Max character length: 10]
+    :param in_coins:
+        List of coins to convert into
     :param try_conversion:
         If set to false, it will try to get only direct trading values
-    :param from_symbol:
-        REQUIRED The crypto-currency symbol of interest
-        [Max character length: 10]
-    :param to_symbols:
-        List of crypto-currency symbols to convert into
     :param exchange:
         The exchange to obtain data from
         (CryptoCompare aggregated average - CCCAGG - by default)
@@ -39,7 +39,7 @@ def get(
         (by default CryptoCompare doesn't sign them),
         this is useful for usage in smart contracts
     :return:
-        Dictionary of prices with appropriate currency symbols as keys.
+        Dictionary of prices with appropriate coin symbols as keys.
 
         Example:
 
@@ -55,13 +55,13 @@ def get(
 
     """
 
-    if isinstance(to_symbols, Sequence):
-        to_symbols = ','.join(to_symbols)
+    if isinstance(in_coins, Sequence):
+        in_coins = ','.join(in_coins)
 
     return {
         'tryConversion': try_conversion,
-        'fsym': from_symbol,
-        'tsyms': to_symbols,
+        'fsym': coin,
+        'tsyms': in_coins,
         'e': exchange,
         'extraParams': extra_params,
         'sign': sign,

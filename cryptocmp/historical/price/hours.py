@@ -5,8 +5,8 @@ from cryptocmp import decorators
 @decorators.response_error_raise
 @decorators.get('data/histohour')
 def get(
-        from_symbol,
-        to_symbol,
+        coin,
+        in_coin,
         try_conversion=None,
         exchange=None,
         aggregate=None,
@@ -27,11 +27,11 @@ def get(
 
     :param try_conversion:
         If set to false, it will try to get only direct trading values
-    :param from_symbol:
-        REQUIRED The cryptocurrency symbol of interest
+    :param coin:
+        REQUIRED The coin of interest
         [Max character length: 10]
-    :param to_symbol:
-        REQUIRED The currency symbol to convert into
+    :param in_coin:
+        REQUIRED The coin to convert into
         [Max character length: 10]
     :param exchange:
         The exchange to obtain data from
@@ -58,8 +58,8 @@ def get(
     # even though they described it as "The number of data points to return"
     return {
         'tryConversion': try_conversion,
-        'fsym': from_symbol,
-        'tsym': to_symbol,
+        'fsym': coin,
+        'tsym': in_coin,
         'e': exchange,
         'aggregate': aggregate,
         'limit': limit-1,
