@@ -1,9 +1,9 @@
-from cryptocmp import decorators as cryptocompare
+from cryptocmp import decorators
 
 
-@cryptocompare.extract_data
-@cryptocompare.response_error_raise
-@cryptocompare.get('data/histominute')
+@decorators.extract_data
+@decorators.response_error_raise
+@decorators.get('data/histominute')
 def get(
         from_symbol,
         to_symbol,
