@@ -1,6 +1,17 @@
 # cryptocmp
 Python wrapper for [CryptoCompare API](https://min-api.cryptocompare.com/)
 
+## Description
+`cryptocmp` provides to the
+[CryptoCompare API](https://min-api.cryptocompare.com/)
+in two ways:
+
+- Straight wrappers of the API calls in `cryptocmp.api` package.
+- A more user friendly mapping to these wrappers in object-oriented
+  style via the following classes:
+
+  - `cryptocmp.coin.Coin` represents a crypto coin.
+
 ## Installation
 
 ```
