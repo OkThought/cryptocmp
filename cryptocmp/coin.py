@@ -1,0 +1,57 @@
+from cryptocmp import coinlist
+import cryptocmp.price.single
+from cryptocmp.exceptions import CoinDoesntExist
+
+
+class Coin:
+
+    def __init__(self, symbol, check_exists=False):
+        self.symbol = symbol
+        if check_exists:
+            exists = symbol in self.all()
+            if not exists:
+                raise CoinDoesntExist
+
+    def price(self, in_coins=None):
+        """
+        Get the current price(s) of conversion this coin into specified coin(s)
+
+        :param in_coins:
+            The coin(s) to get the price of conversion into.
+
+            Each 'coin' here is either a str representing its symbol
+            (e.g. 'BTC') or coin object.
+
+            Can be a single coin or list/tuple of coins.
+
+        :return:
+            If in_coins is instance list or tuple then the dict of prices of
+            this coin in conversion to specified coins.
+            Keys are the specified coin symbols. Values are the prices.
+
+            Otherwise, the singe current conversion price of this coin into the
+            specified currency.
+        """
+
+        return_single_coin_price = False
+        if isinstance(in_coins, str):
+            return_single_coin_price = ',' not in in_coins
+        elif isinstance(in_coins, Coin):
+            in_coins = in_coins.symbol
+            return_single_coin_price = True
+        elif isinstance(in_coins, (list, tuple)):
+            if all(isinstance(coin, Coin) for coin in in_coins):
+                in_coins = (coin.symbol for coin in in_coins)
+        else:
+            raise TypeError("Unsupported type of the argument 'in_coins'")
+
+        ret = cryptocmp.price.single.get(self.symbol, in_coins)
+
+        if return_single_coin_price:
+            ret = ret[in_coins]
+
+        return ret
+
+    @staticmethod
+    def all():
+        return set(coinlist.get().keys())
