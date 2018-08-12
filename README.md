@@ -35,7 +35,13 @@ In object-oriented style:
     >>> Coin.all()
     {'EOSDAC', 'GAP', 'ARN', 'SERA', 'ICASH', 'STAR*', 'AC3', ...}
     ```
-
+- Get a current price of BTC in USD:
+    ```
+    >>> from cryptocmp.coin import Coin
+    >>> bitcoin = Coin('BTC')
+    >>> bitcoin.price('USD')
+    6318.35
+    ```
 
 
 ## Credit
