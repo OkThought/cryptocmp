@@ -42,7 +42,14 @@ In object-oriented style:
     >>> bitcoin.price('USD')
     6318.35
     ```
-
+- Get a current price of BTC in USD, EUR and GBP at the same time
+  (produces single API call under the hood):
+    ```
+    >>> from cryptocmp.coin import Coin
+    >>> bitcoin = Coin('BTC')
+    >>> bitcoin.price(('USD', 'EUR', 'GBP'))
+    {'USD': 6316.17, 'EUR': 5540.34, 'GBP': 4977.23}
+    ```
 
 ## Credit
 
