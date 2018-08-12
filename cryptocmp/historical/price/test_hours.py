@@ -1,5 +1,4 @@
 import unittest
-from datetime import datetime, timezone
 
 import cryptocmp.historical.price.hours
 
