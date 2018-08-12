@@ -1,7 +1,6 @@
 from cryptocmp import decorators
 
 
-@decorators.extract_data
 @decorators.response_error_raise
 @decorators.get('data/price')
 def get(
