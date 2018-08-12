@@ -19,7 +19,7 @@ def response_error_raise(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         response = func(*args, **kwargs)
-        if response['Response'] == 'Error':
+        if 'Response' in response and response['Response'] == 'Error':
             raise CryptoCompareException(response)
         return response
     return wrapper
