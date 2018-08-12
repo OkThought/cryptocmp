@@ -1,5 +1,3 @@
-from typing import Sequence
-
 from cryptocmp import decorators
 
 
@@ -24,7 +22,11 @@ def get(
         REQUIRED The coin of interest
         [Max character length: 10]
     :param in_coins:
-        List of coins to convert into
+        List of coins to convert into.
+        Can be a string representing comma separated list of coin symbols
+        (e.g. 'BTC,ETH,USD') or python list/tuple of coin symbols
+        (e.g. ('BTC', 'ETH', 'USD').
+
     :param try_conversion:
         If set to false, it will try to get only direct trading values
     :param exchange:
@@ -55,7 +57,7 @@ def get(
 
     """
 
-    if isinstance(in_coins, Sequence):
+    if isinstance(in_coins, (tuple, list)):
         in_coins = ','.join(in_coins)
 
     return {
