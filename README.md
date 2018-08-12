@@ -25,14 +25,18 @@ pip install cryptocmp
 
 ## Usage
 
-### Import
+### Examples
 
-```
-import cryptocmp
-```
+In object-oriented style:
 
-### Usage
-Will be here when implemented
+- Get a set of all available crypto coins:
+    ```
+    >>> from cryptocmp.coin import Coin
+    >>> Coin.all()
+    {'EOSDAC', 'GAP', 'ARN', 'SERA', 'ICASH', 'STAR*', 'AC3', ...}
+    ```
+
+
 
 ## Credit
 
