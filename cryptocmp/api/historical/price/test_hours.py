@@ -1,11 +1,11 @@
 import unittest
 
-import cryptocmp.historical.price.hours
+import cryptocmp.api.historical.price.hours
 
 
 class HoursTestCase(unittest.TestCase):
     def test_common(self):
-        data = cryptocmp.historical.price.hours.get('BTC', 'USD', limit=1)
+        data = cryptocmp.api.historical.price.hours.get('BTC', 'USD', limit=1)
         for item in data:
             self.assertIn('open', item)
             self.assertIn('high', item)

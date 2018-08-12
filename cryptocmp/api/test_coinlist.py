@@ -1,11 +1,11 @@
 import unittest
-import cryptocmp.coinlist
+import cryptocmp.api.coinlist
 
 
 class CoinListTestCase(unittest.TestCase):
 
     def test_common(self):
-        coins = cryptocmp.coinlist.get()
+        coins = cryptocmp.api.coinlist.get()
         # popular coins should be in the list
         self.assertIn('BTC', coins)
         self.assertIn('ETH', coins)

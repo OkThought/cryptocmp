@@ -1,5 +1,5 @@
-from cryptocmp import coinlist
-import cryptocmp.price.single
+import cryptocmp.api.coinlist
+import cryptocmp.api.price.single
 from cryptocmp.exceptions import CoinDoesntExist
 
 
@@ -59,7 +59,7 @@ class Coin:
         else:
             raise TypeError("Unsupported type of the argument 'in_coins'")
 
-        ret = cryptocmp.price.single.get(self.symbol, in_coins)
+        ret = cryptocmp.api.price.single.get(self.symbol, in_coins)
 
         if return_single_coin_price:
             ret = ret[in_coins]
@@ -72,4 +72,4 @@ class Coin:
         :returns: A set of all coin symbols available in CryptoCompare coin
             list API call.
         """
-        return set(coinlist.get().keys())
+        return set(cryptocmp.api.coinlist.get().keys())
