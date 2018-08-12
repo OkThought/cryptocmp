@@ -4,8 +4,22 @@ from cryptocmp.exceptions import CoinDoesntExist
 
 
 class Coin:
+    """
+    Provides access to CryptoCompare API in OOP style. Intended to be more
+    user friendly and straightforward.
+    """
 
     def __init__(self, symbol, check_exists=False):
+        """
+        Instantiates a coin object with specified symbol. By default no symbol
+        check is run to avoid extra traffic and slowdown.
+
+        :param symbol: str identifying the coin (e.g. 'BTC', 'ETH').
+        :param check_exists:
+            when set to True triggers a lookup of the symbol in Coin.all() set
+        :raises: CoinDoesntExist if lookup of the specified symbol fails.
+        """
+
         self.symbol = symbol
         if check_exists:
             exists = symbol in self.all()
@@ -54,4 +68,8 @@ class Coin:
 
     @staticmethod
     def all():
+        """
+        :returns: A set of all coin symbols available in CryptoCompare coin
+            list API call.
+        """
         return set(coinlist.get().keys())
