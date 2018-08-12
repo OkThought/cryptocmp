@@ -34,5 +34,3 @@ def get(path):
             return response.json()
         return wrapper
     return decorator
-
-
