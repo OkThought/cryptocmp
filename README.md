@@ -20,15 +20,6 @@ pip install cryptocmp
 import cryptocmp
 ```
 
-### Add to your requirements.txt
-
-`requirements.txt` file content:
-```
-...
-cryptocmp
-...
-```
-
 ### Usage
 Will be here when implemented
 
