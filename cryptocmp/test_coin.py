@@ -19,7 +19,8 @@ class CoinTestCase(unittest.TestCase):
         with self.assertRaises(CoinDoesntExist):
             Coin(absent_coin_symbol, check_exists=True)
 
-    def test_init(self):
+    @staticmethod
+    def test_init():
         # Assumption: BTC lives forever
         Coin('BTC', check_exists=True)
         # Assumption: ETH lives forever
