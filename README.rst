@@ -1,6 +1,21 @@
 cryptocmp
 =========
 
+.. image:: https://img.shields.io/pypi/v/cryptocmp.svg
+        :target: https://pypi.python.org/pypi/cryptocmp
+
+.. image:: https://img.shields.io/travis/OkThought/cryptocmp.svg
+        :target: https://travis-ci.org/OkThought/cryptocmp
+
+.. image:: https://readthedocs.org/projects/cryptocmp/badge/?version=latest
+        :target: https://cryptocmp.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+.. image:: https://pyup.io/repos/github/OkThought/cryptocmp/shield.svg
+     :target: https://pyup.io/repos/github/OkThought/cryptocmp/
+     :alt: Updates
+
+
 Python wrapper for `CryptoCompare API`_
 
 Description
@@ -37,25 +52,25 @@ Examples
 In object-oriented style:
 
 -  Get a set of all available crypto coins:
-   
-   >>> from cryptocmp.coin import Coin   
-   >>> Coin.all()   
+
+   >>> from cryptocmp.coin import Coin
+   >>> Coin.all()
    {'EOSDAC', 'GAP', 'ARN', 'SERA', 'ICASH', 'STAR*', 'AC3', ...}
 
-   
+
 -  Get a current price of BTC in USD:
-   
-   >>> from cryptocmp.coin import Coin   
-   >>> bitcoin = Coin('BTC')   
-   >>> bitcoin.price('USD')   
+
+   >>> from cryptocmp.coin import Coin
+   >>> bitcoin = Coin('BTC')
+   >>> bitcoin.price('USD')
    6318.35``
-   
+
 -  Get a current price of BTC in USD, EUR and GBP at the same time
    (produces single API call under the hood):
-   
-   >>> from cryptocmp.coin import Coin   
-   >>> bitcoin = Coin('BTC')   
-   >>> bitcoin.price(('USD', 'EUR', 'GBP'))   
+
+   >>> from cryptocmp.coin import Coin
+   >>> bitcoin = Coin('BTC')
+   >>> bitcoin.price(('USD', 'EUR', 'GBP'))
    {'USD': 6316.17, 'EUR': 5540.34, 'GBP': 4977.23}``
 
 Credit
