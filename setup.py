@@ -47,6 +47,6 @@ setup(
     setup_requires=setup_requirements,
     tests_require=test_requirements,
     url='https://github.com/OkThought/cryptocmp',
-    version='0.1.3',
+    version='0.1.4',
     zip_safe=False,
 )
