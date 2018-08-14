@@ -112,7 +112,7 @@ Tips
 To run a subset of tests::
 
 
-    $ python -m unittest tests.test_cryptocmp
+    $ python -m unittest cryptocmp.api
 
 Deploying
 ---------
