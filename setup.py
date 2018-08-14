@@ -3,6 +3,7 @@
 
 """The setup script."""
 import os
+from sys import stderr
 
 from setuptools import setup, find_packages
 
@@ -13,6 +14,7 @@ try:
     readme = parse_from_file(readme_file)
 except ImportError:
     # m2r may not be installed in user environment
+    print("Warning: m2r is not installed", file=stderr)
     with open(readme_file) as f:
         readme = f.read()
 
