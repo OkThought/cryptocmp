@@ -35,8 +35,6 @@ import cryptocmp
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
-    # .md to .rst (for mdinclude:: directive)
-    'm2r',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
