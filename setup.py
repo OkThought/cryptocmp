@@ -2,16 +2,27 @@
 # -*- coding: utf-8 -*-
 
 """The setup script."""
+import os
 
 from setuptools import setup, find_packages
 
-with open('README.md') as readme_file:
-    readme = readme_file.read()
+readme_file = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           'README.md')
+try:
+    from m2r import parse_from_file
+    readme = parse_from_file(readme_file)
+except ImportError:
+    # m2r may not be installed in user environment
+    with open(readme_file) as f:
+        readme = f.read()
 
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = []
+requirements = [
+    'm2r',
+    'requests',
+]
 
 setup_requirements = []
 
