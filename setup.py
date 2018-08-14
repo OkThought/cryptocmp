@@ -42,7 +42,6 @@ setup(
     name='cryptocmp',
     packages=find_packages(include=['cryptocmp']),
     setup_requires=setup_requirements,
-    test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/OkThought/cryptocmp',
     version='0.0.1',
