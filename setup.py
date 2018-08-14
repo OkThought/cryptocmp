@@ -11,7 +11,9 @@ readme = parse_from_file('README.md')
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = []
+requirements = [
+    'requests',
+]
 
 setup_requirements = []
 
