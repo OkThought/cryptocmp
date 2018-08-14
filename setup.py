@@ -2,9 +2,6 @@
 # -*- coding: utf-8 -*-
 
 """The setup script."""
-import os
-from sys import stderr
-
 from setuptools import setup, find_packages
 
 from m2r import parse_from_file
