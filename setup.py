@@ -13,7 +13,9 @@ with open('HISTORY.rst') as history_file:
 
 requirements = []
 
-setup_requirements = []
+setup_requirements = [
+    'm2r',
+]
 
 test_requirements = []
 
