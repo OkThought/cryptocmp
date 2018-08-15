@@ -13,32 +13,36 @@ def get(
 ):
     """Get the current price of any coin in any other coin(s).
 
-    If the crypto does not trade directly into the toSymbol requested, BTC will
-    be used for conversion.
-    If the opposite pair trades CryptoCompare inverts it (eg.: BTC-XMR)
+    If the crypto does not trade directly, BTC will be used for conversion.
+    If the opposite pair trades, CryptoCompare inverts it (eg.: BTC-XMR)
 
     :param coin:
-        REQUIRED The coin of interest
+        Coin to get price of, e.g. 'BTC'.
         [Max character length: 10]
+
     :param in_coins:
-        List of coins to convert into.
-        Can be a string representing comma separated list of coin symbols
-        (e.g. 'BTC,ETH,USD') or python list/tuple of coin symbols
+        List of coins/currencies get price in.
+        Can be a string representing comma separated list of coin/currency
+        symbols (e.g. 'BTC,ETH,USD') or python list/tuple
         (e.g. ('BTC', 'ETH', 'USD').
 
     :param try_conversion:
-        If set to false, it will try to get only direct trading values
+        If set to false, it will try to get only direct trading values.
+
     :param exchange:
         The exchange to obtain data from
-        (CryptoCompare aggregated average - CCCAGG - by default)
+        (CryptoCompare aggregated average - CCCAGG - by default).
         [Max character length: 30]
+
     :param extra_params:
-        The name of your application
+        The name of your application.
         (recommended to send it) [Max character length: 2000]
+
     :param sign:
         If set to true, the server will sign the requests
         (by default CryptoCompare doesn't sign them),
-        this is useful for usage in smart contracts
+        this is useful for usage in smart contracts.
+
     :return:
         Dictionary of prices with appropriate coin symbols as keys.
 

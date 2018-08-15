@@ -16,14 +16,14 @@ def get(
     coins CryptoCompare has done some research on.
 
     :param built_on:
-        The platform that the token is built on [Max character length: 10]
+        The platform that the token is built on. [Max character length: 10]
     :param extra_params:
-        The name of your application
-        (recommended to send it) [Max character length: 2000]
+        The name of your application (recommended to send it).
+        [Max character length: 2000]
     :param sign:
         If set to true, the server will sign the requests
         (by default CryptoCompare doesn't sign them),
-        this is useful for usage in smart contracts
+        this is useful for usage in smart contracts.
     :return:
         List of available coins in CryptoCompare.
     """

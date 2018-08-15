@@ -15,8 +15,10 @@ class Coin:
         check is run to avoid extra traffic and slowdown.
 
         :param symbol: str identifying the coin (e.g. 'BTC', 'ETH').
+
         :param check_exists:
             when set to True triggers a lookup of the symbol in Coin.all() set
+
         :raises: CoinDoesntExist if lookup of the specified symbol fails.
         """
 
@@ -25,17 +27,22 @@ class Coin:
             self.check_exists()
 
     def check_exists(self):
-        """Throws CoinDoesntExist if this coin symbol does not exist"""
+        """
+        Performs a lookup of the symbol in Coin.all() set.
+
+        :raises: CoinDoesntExist if this coin symbol does not exist.
+        """
+
         exists = self.symbol in self.all()
         if not exists:
             raise CoinDoesntExist
 
     def price(self, in_coins=None):
         """
-        Get the current price(s) of conversion this coin into specified coin(s)
+        Get the current price(s) of this coin in specified coin(s).
 
         :param in_coins:
-            The coin(s) to get the price of conversion into.
+            The coin(s)/currency(ies) to get the price in.
 
             Each 'coin' here is either a str representing its symbol
             (e.g. 'BTC') or coin object.
@@ -76,4 +83,5 @@ class Coin:
         :returns: A set of all coin symbols available in CryptoCompare coin
             list API call.
         """
+
         return set(cryptocmp.api.coinlist.get().keys())

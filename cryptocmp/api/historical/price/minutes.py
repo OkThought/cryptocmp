@@ -26,32 +26,41 @@ def get(
     trading in the specified currency.
 
     :param try_conversion:
-        If set to false, it will try to get only direct trading values
+        If set to false, it will try to get only direct trading values.
+
     :param coin:
-        REQUIRED The coin symbol of interest
+        The coin to get price of.
         [Max character length: 10]
+
     :param in_coin:
-        REQUIRED The coin to convert into
+        The coin/currency to get price in.
         [Max character length: 10]
+
     :param exchange:
         The exchange to obtain data from
-        (CryptoCompare aggregated average - CCCAGG - by default)
+        (CryptoCompare aggregated average - CCCAGG - by default).
         [Max character length: 30]
+
     :param aggregate:
         Time period to aggregate the data over (in minutes)
+
     :param limit:
-        The number of data points to return. It is more than 1
+        The number of data points to return. It is always more than 1.
+
     :param to_timestamp:
         Last unix timestamp to return data for.
+
     :param extra_params:
-        The name of your application
-        (recommended to send it) [Max character length: 2000]
+        The name of your application (recommended to send it).
+        [Max character length: 2000]
+
     :param sign:
         If set to true, the server will sign the requests
         (by default CryptoCompare doesn't sign them),
-        this is useful for usage in smart contracts
+        this is useful for usage in smart contracts.
+
     :return:
-        OHLCV price data from each minute of the CryptoCompare historical data
+        OHLCV price data from each minute of the CryptoCompare historical data.
     """
 
     # use limit-1 because it seems api interprets it as the last index
