@@ -2,16 +2,23 @@
 History
 =======
 
-0.1.0 (2018-08-12)
+0.2.0 (2018-08-15)
 ------------------
 
-* Add wrappers for API calls:
+* Implement wrappers for API calls:
+    * Get historical daily OHLCV data
+
+
+0.1.0 (2018-08-14)
+------------------
+
+* Implement wrappers for API calls:
     * Get list of available coins
     * Get conversion price for single coin into list of coins and fiat currencies
     * Get historical OHLCV data in two time scales:
         * minutes
         * hours
-* Add Coin class for human friendly, object-oriented access to API wrappers:
+* Implement Coin class for human friendly, object-oriented access to API wrappers:
     * List of available coins
     * Single conversion price
 
