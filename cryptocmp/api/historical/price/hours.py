@@ -19,9 +19,6 @@ def get(
     Get open, high, low, close, volumefrom and volumeto from the hourly
     historical data.
 
-    This data is only stored for 7 days, if you need more, use the hourly or
-    daily path.
-
     It uses BTC conversion if data is not available because the coin is not
     trading in the specified currency.
 
