@@ -25,6 +25,7 @@ class Coin:
             self.check_exists()
 
     def check_exists(self):
+        """Throws CoinDoesntExist if this coin symbol does not exist"""
         exists = self.symbol in self.all()
         if not exists:
             raise CoinDoesntExist
