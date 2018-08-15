@@ -22,9 +22,12 @@ class Coin:
 
         self.symbol = symbol
         if check_exists:
-            exists = symbol in self.all()
-            if not exists:
-                raise CoinDoesntExist
+            self.check_exists()
+
+    def check_exists(self):
+        exists = self.symbol in self.all()
+        if not exists:
+            raise CoinDoesntExist
 
     def price(self, in_coins=None):
         """
