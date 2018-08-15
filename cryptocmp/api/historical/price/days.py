@@ -11,6 +11,7 @@ def get(
         exchange=None,
         aggregate=None,
         limit=None,
+        all_data=None,
         to_timestamp=None,
         extra_params=None,
         sign=None,
@@ -40,6 +41,11 @@ def get(
         Time period to aggregate the data over (in days)
     :param limit:
         The number of data points to return. It is more than 1
+    :param all_data:
+        Returns all data (only available on histo day).
+        To enable pass True or 1.
+
+        Note: if set, limit is ignored.
     :param to_timestamp:
         Last unix timestamp to return data for.
     :param extra_params:
@@ -62,6 +68,7 @@ def get(
         'e': exchange,
         'aggregate': aggregate,
         'limit': limit-1,
+        'allData': all_data,
         'toTs': to_timestamp,
         'extraParams': extra_params,
         'sign': sign,
