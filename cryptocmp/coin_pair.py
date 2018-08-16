@@ -82,7 +82,7 @@ class CoinPair:
             extra_params=extra_params,
             sign=sign,
         )
-        return price_dict[self.first.symbol]
+        return price_dict[self.second.symbol]
 
     def price_history(self, time_from=None, time_to=None, time_unit=None,
                       limit=None, exchange=None, extra_params=None, sign=None):
