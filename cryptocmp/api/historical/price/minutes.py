@@ -65,13 +65,16 @@ def get(
 
     # use limit-1 because it seems api interprets it as the last index
     # even though they described it as "The number of data points to return"
+    if limit is not None:
+        limit = limit - 1
+
     return {
         'tryConversion': try_conversion,
         'fsym': coin,
         'tsym': in_coin,
         'e': exchange,
         'aggregate': aggregate,
-        'limit': limit-1,
+        'limit': limit,
         'toTs': to_timestamp,
         'extraParams': extra_params,
         'sign': sign,
