@@ -2,7 +2,7 @@
 History
 =======
 
-0.2.0 (2018-08-15)
+0.2.0 (2018-08-16)
 ------------------
 
 * Implement wrappers for API calls:
