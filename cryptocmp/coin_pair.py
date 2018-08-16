@@ -13,6 +13,11 @@ def _coin(coin_or_symbol):
 
 
 class CoinPair:
+    """
+    Provides access to CryptoCompare API in OOP style. Intended to be more
+    user friendly and straightforward.
+    """
+
     def __init__(self, first, second):
         self.first = _coin(first)
         self.second = _coin(second)
