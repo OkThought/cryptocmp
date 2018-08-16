@@ -85,3 +85,6 @@ class Coin:
         """
 
         return set(cryptocmp.api.coinlist.get().keys())
+
+    def __str__(self):
+        return self.symbol
