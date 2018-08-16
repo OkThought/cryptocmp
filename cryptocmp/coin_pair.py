@@ -84,8 +84,8 @@ class CoinPair:
         return price_dict[self.second.symbol]
 
     def price_history(self, time_from=None, time_to=None, time_unit=None,
-                      limit=None, exchange=None, extra_params=None, sign=None,
-                      try_conversion=None):
+                      points_num=None, exchange=None, extra_params=None,
+                      sign=None, try_conversion=None):
         """Get CryptoCompare daily, hourly or minutely historical OHLCV data.
 
         :param datetime.datetime time_from:
@@ -106,7 +106,7 @@ class CoinPair:
             (CryptoCompare aggregated average - CCCAGG - by default).
             [Max character length: 30]
 
-        :param limit:
+        :param points_num:
             The number of data points to return. It is always more than 1.
 
         :param extra_params:
@@ -129,7 +129,7 @@ class CoinPair:
         :Example:
         ::
 
-            >>> CoinPair('BTC', 'USD').price_history(limit=2)
+            >>> CoinPair('BTC', 'USD').price_history(points_num=2)
             [
                 {
                     'time': 1534291200,
@@ -179,17 +179,18 @@ class CoinPair:
                             type(time_unit))
 
         if time_from is not None:
-            if limit is not None:
-                raise RuntimeError('time_from and limit must not be specified'
-                                   'together')
+            if points_num is not None:
+                raise RuntimeError('time_from and points_num must not be '
+                                   'specified together')
             if time_to is None:
                 time_to = datetime.datetime.now()
             time_period = time_to - time_from
-            limit = time_period // time_unit
+            points_num = time_period // time_unit
 
         price_history_getter = _price_history_getter(time_unit)
 
         to_timestamp = None if time_to is None else int(time_to.timestamp())
+        limit = points_num
 
         return price_history_getter(
             coin=self.first.symbol,
