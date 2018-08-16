@@ -166,22 +166,23 @@ class CoinPair:
             raise TypeError('Unsupported type of time_unit: %s' %
                             type(time_unit))
 
-        if time_to is None:
-            time_to = datetime.datetime.now()
-
         if time_from is not None:
             if limit is not None:
                 raise RuntimeError('time_from and limit must not be specified'
                                    'together')
+            if time_to is None:
+                time_to = datetime.datetime.now()
             time_period = time_to - time_from
             limit = time_period // time_unit
 
         price_history_getter = _price_history_getter(time_unit)
 
+        to_timestamp = None if time_to is None else int(time_to.timestamp())
+
         return price_history_getter(
             coin=self.first.symbol,
             in_coin=self.second.symbol,
-            to_timestamp=time_to.timestamp(),
+            to_timestamp=to_timestamp,
             limit=limit,
             exchange=exchange,
             aggregate=aggregate,
