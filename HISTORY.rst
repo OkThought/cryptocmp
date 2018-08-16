@@ -2,6 +2,13 @@
 History
 =======
 
+0.3.0 (2018-08-16)
+------------------
+
+* Implement CoinPair class with access to the following API in object-oriented manner:
+    * Get current price for this pair
+    * Get historical daily, hourly, minutely OHLCV data
+
 0.2.0 (2018-08-16)
 ------------------
 
@@ -15,12 +22,12 @@ History
 
 * Implement wrappers for API calls:
     * Get list of available coins
-    * Get conversion price for single coin into list of coins and fiat currencies
+    * Get price for single coin into list of coins and fiat currencies
     * Get historical OHLCV data in two time scales:
         * minutes
         * hours
-* Implement Coin class for human friendly, object-oriented access to API wrappers:
-    * List of available coins
+* Implement Coin class with access to the following API in object-oriented manner:
+    * List available coins
     * Single conversion price
 
 0.0.1 (2018-08-12)
