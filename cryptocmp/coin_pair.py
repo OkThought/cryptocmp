@@ -11,11 +11,8 @@ DAY = datetime.timedelta(days=1)
 
 _time_units = {
     'minute': MINUTE,
-    'minutely': MINUTE,
     'hour': HOUR,
-    'hourly': HOUR,
     'day': DAY,
-    'dayly': DAY,
 }
 
 
