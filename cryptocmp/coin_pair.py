@@ -4,7 +4,6 @@ import cryptocmp.api.price.single
 import cryptocmp.coin
 import datetime
 
-
 MINUTE = datetime.timedelta(minutes=1)
 HOUR = datetime.timedelta(hours=1)
 DAY = datetime.timedelta(days=1)
@@ -85,7 +84,62 @@ class CoinPair:
         return price_dict[self.second.symbol]
 
     def price_history(self, time_from=None, time_to=None, time_unit=None,
-                      limit=None, exchange=None, extra_params=None, sign=None):
+                      limit=None, exchange=None, extra_params=None, sign=None,
+                      try_conversion=None):
+        """Get CryptoCompare daily, hourly or minutely historical OHLCV data.
+
+        :param datetime.datetime time_from:
+            Lower bound of time range to get historical data from.
+
+        :param datetime.datetime time_to:
+            Upper bound of time range to get historical data from.
+
+        :param Union[datetime.timedelta, str] time_unit:
+            The amount of time between data points.
+
+            Can be any instance of timedelta. Minimum 1 minute.
+
+            Can also be str (one of 'day', 'hour', 'minute').
+
+        :param exchange:
+            The exchange to obtain data from
+            (CryptoCompare aggregated average - CCCAGG - by default).
+            [Max character length: 30]
+
+        :param limit:
+            The number of data points to return. It is always more than 1.
+
+        :param extra_params:
+            The name of your application (recommended to send it).
+            [Max character length: 2000]
+
+        :param sign:
+            If set to true, the server will sign the requests
+            (by default CryptoCompare doesn't sign them),
+            this is useful for usage in smart contracts.
+
+        :param try_conversion:
+            If set to false, it will try to get only direct trading values.
+
+        :return:
+            CryptoCompare historical OHLCV data.
+
+        :rtype: dict
+
+        :Example:
+        ::
+
+            [{
+                'time': 1534204800,
+                'close': 6199.6,
+                'high': 6266.5,
+                'low': 5891.87,
+                'open': 6263.2,
+                'volumefrom': 125196.64,
+                'volumeto': 759847789.73,
+            }]
+        """
+
         aggregate = None
         if time_unit is None:
             time_unit = DAY
@@ -133,6 +187,7 @@ class CoinPair:
             aggregate=aggregate,
             extra_params=extra_params,
             sign=sign,
+            try_conversion=try_conversion,
         )
 
     def __str__(self):
