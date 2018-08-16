@@ -73,6 +73,30 @@ In object-oriented style:
    >>> bitcoin.price(('USD', 'EUR', 'GBP'))
    {'USD': 6316.17, 'EUR': 5540.34, 'GBP': 4977.23}``
 
+-  Get last 2 candles of BTC/USD daily historical data::
+
+    >>> CoinPair('BTC', 'USD').price_history(points_num=2)
+    [
+        {
+            'time': 1534291200,
+            'close': 6274.22,
+            'high': 6620.07,
+            'low': 6193.63,
+            'open': 6199.63,
+            'volumefrom': 132926.33,
+            'volumeto': 852103141.83
+        },
+        {
+            'time': 1534377600,
+            'close': 6439.39,
+            'high': 6439.39,
+            'low': 6217.33,
+            'open': 6274.22,
+            'volumefrom': 24013.18,
+            'volumeto': 152446768.26
+        }
+    ]
+
 Credit
 ------
 
