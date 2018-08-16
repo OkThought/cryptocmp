@@ -129,15 +129,27 @@ class CoinPair:
         :Example:
         ::
 
-            [{
-                'time': 1534204800,
-                'close': 6199.6,
-                'high': 6266.5,
-                'low': 5891.87,
-                'open': 6263.2,
-                'volumefrom': 125196.64,
-                'volumeto': 759847789.73,
-            }]
+            >>> CoinPair('BTC', 'USD').price_history(limit=2)
+            [
+                {
+                    'time': 1534291200,
+                    'close': 6274.22,
+                    'high': 6620.07,
+                    'low': 6193.63,
+                    'open': 6199.63,
+                    'volumefrom': 132926.33,
+                    'volumeto': 852103141.83
+                },
+                {
+                    'time': 1534377600,
+                    'close': 6439.39,
+                    'high': 6439.39,
+                    'low': 6217.33,
+                    'open': 6274.22,
+                    'volumefrom': 24013.18,
+                    'volumeto': 152446768.26
+                }
+            ]
         """
 
         aggregate = None
