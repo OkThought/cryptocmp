@@ -1,7 +1,7 @@
 from warnings import warn
 
 import cryptocmp.api.price.single
-from cryptocmp.coin import Coin
+import cryptocmp.coin
 import datetime
 
 
@@ -32,8 +32,8 @@ def _price_history_getter(time_unit):
 
 def _coin(coin_or_symbol):
     if isinstance(coin_or_symbol, str):
-        coin = Coin(coin_or_symbol)
-    elif isinstance(coin_or_symbol, Coin):
+        coin = cryptocmp.coin.Coin(coin_or_symbol)
+    elif isinstance(coin_or_symbol, cryptocmp.coin.Coin):
         coin = coin_or_symbol
     else:
         raise TypeError

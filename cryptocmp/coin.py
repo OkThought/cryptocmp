@@ -1,6 +1,6 @@
 import cryptocmp.api.coinlist
 import cryptocmp.api.price.single
-from cryptocmp.coin_pair import CoinPair
+import cryptocmp.coin_pair
 from cryptocmp.exceptions import CoinDoesntExist
 
 
@@ -88,7 +88,7 @@ class Coin:
         return ret
 
     def to(self, coin):
-        return CoinPair(self, coin)
+        return cryptocmp.coin_pair.CoinPair(self, coin)
 
     def __str__(self):
         return self.symbol
