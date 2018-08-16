@@ -5,4 +5,4 @@
 URL_BASE = 'https://min-api.cryptocompare.com/'
 __author__ = 'Ivan Bogush'
 __email__ = 'bogush.vano@gmail.com'
-__version__ = '0.1.6'
+__version__ = '0.2.0'
