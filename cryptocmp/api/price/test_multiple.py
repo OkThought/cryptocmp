@@ -15,6 +15,12 @@ class MultiplePriceTestCase(TestCase):
         self.assertIn('BTC', data)
         self.assertIn('ETH', data['BTC'])
 
+    def test_single_list(self):
+        data = cryptocmp.api.price.multiple.get(['BTC',], ['ETH',])
+        self.assertIsInstance(data, dict)
+        self.assertIn('BTC', data)
+        self.assertIn('ETH', data['BTC'])
+
     def test_multiple_tuple(self):
         data = cryptocmp.api.price.multiple.get(('BTC', 'ETH'), ('USD', 'EUR'))
         self.assertIsInstance(data, dict)
