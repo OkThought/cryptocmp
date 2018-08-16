@@ -9,6 +9,15 @@ class Coin:
     user friendly and straightforward.
     """
 
+    @staticmethod
+    def all():
+        """
+        :returns: A set of all coin symbols available in CryptoCompare coin
+            list API call.
+        """
+
+        return set(cryptocmp.api.coinlist.get().keys())
+
     def __init__(self, symbol, check_exists=False):
         """
         Instantiates a coin object with specified symbol. By default no symbol
@@ -76,15 +85,6 @@ class Coin:
             ret = ret[in_coins]
 
         return ret
-
-    @staticmethod
-    def all():
-        """
-        :returns: A set of all coin symbols available in CryptoCompare coin
-            list API call.
-        """
-
-        return set(cryptocmp.api.coinlist.get().keys())
 
     def __str__(self):
         return self.symbol
