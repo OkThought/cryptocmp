@@ -204,13 +204,13 @@ class CoinPair:
                      'Using the minimum time unit of 1 minute instead.')
                 time_unit = MINUTE
             elif time_unit < HOUR:
-                aggregate=time_unit.total_seconds() / 60
+                aggregate = time_unit.total_seconds() / 60
                 time_unit = MINUTE
             elif time_unit < DAY:
-                aggregate=time_unit.total_seconds() / 3600
+                aggregate = time_unit.total_seconds() / 3600
                 time_unit = HOUR
             else:
-                aggregate=time_unit.days
+                aggregate = time_unit.days
                 time_unit = DAY
         elif isinstance(time_unit, str):
             try:
