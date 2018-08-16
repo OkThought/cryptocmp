@@ -7,6 +7,7 @@ History
 
 * Implement wrappers for API calls:
     * Get historical daily OHLCV data
+    * Get prices of multiple coins, single API call
 
 
 0.1.0 (2018-08-14)
