@@ -88,6 +88,28 @@ class CoinPair:
                       sign=None, try_conversion=None):
         """Get CryptoCompare daily, hourly or minutely historical OHLCV data.
 
+        **Description**
+
+        Determines which API call is suitable for the passed arguments and
+        adapts them to API arguments keeping request semantic.
+
+        **API call determination**
+
+        When passed arguments are sufficient to imply the time scale
+        (aka time_unit) it is implied and used to decide which API call to use.
+
+        **Arguments adaptation**
+
+        When passed arguments are sufficient to imply the time range, it is
+        implied and adopted using API call arguments: to_timestamp and limit.
+
+        **Defaults**
+
+        - Semantically (not always syntactically), time_to defaults to now.
+
+        - time_unit defaults to day if it can not be implied.
+
+
         :param datetime.datetime time_from:
             Lower bound of time range to get historical data from.
 
@@ -153,9 +175,30 @@ class CoinPair:
         """
 
         aggregate = None
-        if time_unit is None:
-            time_unit = DAY
-        elif isinstance(time_unit, datetime.timedelta):
+
+        if time_from is not None:
+
+            if time_to is None:
+                time_to = datetime.datetime.now()
+
+            time_period = time_to - time_from
+
+            if points_num is not None:
+                # we can imply time_unit ourselves
+                if time_unit is not None:
+                    raise RuntimeError('time_unit, time_from and points_num '
+                                       'must not be specified together')
+                time_unit = time_period / points_num
+
+                # limit the output according to points_num
+                limit = points_num
+            else:
+                # limit the output according to time_period
+                limit = time_period // time_unit
+        else:
+            limit = points_num
+
+        if isinstance(time_unit, datetime.timedelta):
             if time_unit < MINUTE:
                 warn('Time unit less than 1 minute is currently not supported.'
                      'Using the minimum time unit of 1 minute instead.')
@@ -174,23 +217,16 @@ class CoinPair:
                 time_unit = _time_units[time_unit]
             except KeyError:
                 raise ValueError('Unknown time_unit: %s' % time_unit)
+        elif time_unit is None:
+            # default to day
+            time_unit = DAY
         else:
             raise TypeError('Unsupported type of time_unit: %s' %
                             type(time_unit))
 
-        if time_from is not None:
-            if points_num is not None:
-                raise RuntimeError('time_from and points_num must not be '
-                                   'specified together')
-            if time_to is None:
-                time_to = datetime.datetime.now()
-            time_period = time_to - time_from
-            points_num = time_period // time_unit
-
         price_history_getter = _price_history_getter(time_unit)
 
         to_timestamp = None if time_to is None else int(time_to.timestamp())
-        limit = points_num
 
         return price_history_getter(
             coin=self.first.symbol,
