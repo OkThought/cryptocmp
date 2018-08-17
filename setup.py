@@ -36,7 +36,7 @@ setup(
     include_package_data=True,
     keywords='cryptocmp',
     name='cryptocmp',
-    packages=find_packages(where='cryptocmp', exclude='test*'),
+    packages=find_packages(),
     setup_requires=setup_requirements,
     tests_require=test_requirements,
     url='https://github.com/OkThought/cryptocmp',
